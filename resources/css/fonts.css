@@ -1,0 +1,41 @@
+@font-face {
+  font-family: 'brandon-grotesque-black';
+  src: url('/fonts/brandon-grotesque-black.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap; /* Mejora el rendimiento de carga */
+}
+@font-face {
+  font-family: 'BrandonGrotesque-Regular';
+  src: url('/fonts/BrandonGrotesque-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'roboto-condensed-semibold';
+  src: url('/fonts/roboto-condensed-semibold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Roboto-Regular';
+  src: url('/fonts/Roboto-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+li {
+  font-family: 'brandon-grotesque-black';
+}
+.roboto-condensed-semibold {
+  font-family: 'roboto-condensed-semibold';
+}
+.roboto-regular {
+  font-family: 'Roboto-Regular';
+}
+.brandonGrotesque-regular {
+  font-family: 'BrandonGrotesque-Regular';
+}

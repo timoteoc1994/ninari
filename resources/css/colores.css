@@ -1,0 +1,128 @@
+.bg-gris{
+    background-color: #b6b6b6;
+}
+.bg-anaranjado{
+    background-color: #ED730E;
+}
+.p-100{
+    padding: 90px;
+}
+.pt-100{
+    padding-top: 100px;
+}	
+.pt-70{
+    padding-top: 70px;
+}
+.txt-anaranjado{
+    color: #F8AA38;
+}
+.txt-anaranjado-fuerte{
+    color: #E9601E;
+}
+.txt-colo-menu {
+    color: #3A383F;
+  }
+.txt-azul{
+    color: #544696;
+}
+.txt-azul-fuerte{
+    color: #2C2961;
+}
+.txt-30{
+    font-size: 60px;
+}
+.txt-25{
+    font-size: 30px;
+}	
+.rounded-t-30{
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+}
+.rounded-b-30{
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+}
+.interlineado-pequeno {
+    line-height: 1; /* Ajusta según necesites */
+}
+.bg-custom-gradient {
+    background-image: linear-gradient(to left,#FF6699 1%, #5C4092 100% );
+}
+.bg-anaranjado {
+    background-color: #ED730E;
+}
+.bg-azul {
+    background-color: #544696;
+}
+.bg_gris_claro {
+    background-color: #DBDBDB;
+}
+.bg_rosado {
+    background-color: #D4A8CFDB;
+}
+.bg-azul-opaco{
+    background-color: #8F86C0;
+}
+.bg-amarillo{
+    background-color: #FAD491;
+}
+.bg-rosado-raro{
+    background-color: #D3A7CE;
+}
+
+.placeholder-azul::placeholder {
+    --tw-placeholder-opacity: 1;
+    color: rgb(83 69 149 / var(--tw-placeholder-opacity, 1)) /* #3b82f6 */;
+}
+
+.flotar {
+    animation: flotar 3s ease-in-out infinite;
+}
+/**efecto flotacion */
+@keyframes flotar {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+@keyframes zoomFloat {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(0.95); /* Se hace un poco más pequeño */
+    }
+    100% {
+        transform: scale(1); /* Vuelve a su tamaño original */
+    }
+}
+
+/* Clase para aplicar la animación */
+.acercar {
+    animation: zoomFloat 6s ease-in-out infinite; /* Animación infinita con suavidad */
+}
+
+@keyframes zoomEffect {
+    0% {
+        transform: translateZ(0); /* Imagen en su posición original */
+    }
+    50% {
+        transform: translateZ(-50px); /* La cámara parece alejarse */
+    }
+    100% {
+        transform: translateZ(0); /* Vuelve a su posición original */
+    }
+}
+
+/* Clase para aplicar el efecto sin cambiar el tamaño de la imagen */
+.zoom {
+    animation: zoomEffect 3s ease-in-out infinite; /* Animación infinita */
+    transform-origin: center; /* Asegura que el zoom se haga en el centro de la imagen */
+    perspective: 500px; /* Da un toque de profundidad para el efecto 3D */
+}
