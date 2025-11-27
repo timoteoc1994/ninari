@@ -235,33 +235,7 @@ const Ingrid = computed(
                                         class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto"
                                     >
                                         <!-- Miembro 1 -->
-                                         <a href="https://www.linkedin.com/in/akapana-yantalema/" target="_blank">
-                                        <div
-                                            class="relative group aspect-[2.6/3.9] rounded-[30px] overflow-hidden bg-white shadow-lg"
-                                        >
-                                            <img
-                                                :src="Akapana"
-                                                alt="Ana García"
-                                                class="absolute inset-0 w-full h-full object-contain scale-105 transition-transform duration-500 group-hover:scale-110"
-                                            />
-                                            <div
-                                                class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col justify-end p-6"
-                                            >
-                                                <h3
-                                                    class="text-white font-bold text-xl transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300"
-                                                >
-                                                    Akapana Yantalema
-                                                </h3>
-                                                <p
-                                                    class="text-gray-300 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-75"
-                                                >
-                                                Director Ejecutivo <br>
-                                                FOUNDER
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                        <!-- Miembro 2 -->
+
                                         <a href="https://www.linkedin.com/in/ruthbolanos/" target="_blank">
                                         <div
                                             class="relative group aspect-[2.6/3.9] rounded-[30px] overflow-hidden bg-white shadow-lg"
@@ -282,8 +256,38 @@ const Ingrid = computed(
                                                 <p
                                                     class="text-gray-300 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-75"
                                                 >
-                                                Coordinadora Nacional de programas <br>
-                                                FOUNDER
+                                                Directora Ejecutiva <br>
+                                                
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </a>
+
+                                        
+                                        <!-- Miembro 2 -->
+                                        
+                                         <a href="https://www.linkedin.com/in/akapana-yantalema/" target="_blank">
+                                        <div
+                                            class="relative group aspect-[2.6/3.9] rounded-[30px] overflow-hidden bg-white shadow-lg"
+                                        >
+                                            <img
+                                                :src="Akapana"
+                                                alt="Ana García"
+                                                class="absolute inset-0 w-full h-full object-contain scale-105 transition-transform duration-500 group-hover:scale-110"
+                                            />
+                                            <div
+                                                class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col justify-end p-6"
+                                            >
+                                                <h3
+                                                    class="text-white font-bold text-xl transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300"
+                                                >
+                                                    Akapana Yantalema
+                                                </h3>
+                                                <p
+                                                    class="text-gray-300 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-75"
+                                                >
+                                                Ecosistemas <br>
+                                                
                                                 </p>
                                             </div>
                                         </div>

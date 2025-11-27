@@ -108,7 +108,10 @@ const cruz_roja = computed(
     () => `${import.meta.env.VITE_APP_URL}/storage/programas/cruz_roja.png`
 );
 const programa_conexion = computed(
-    () => `${ import.meta.env.VITE_APP_URL}/storage/programas/programa_conexion.png`
+    () =>
+        `${
+            import.meta.env.VITE_APP_URL
+        }/storage/programas/programa_conexion.png`
 );
 const conexion = computed(
     () => `${import.meta.env.VITE_APP_URL}/storage/programas/conexion@3x.png`
@@ -118,6 +121,12 @@ const speedy = computed(
 );
 const programa_hgpt = computed(
     () => `${import.meta.env.VITE_APP_URL}/storage/programas/programa_hgpt.png`
+);
+const diseño_desarrollo = computed(
+    () => `${import.meta.env.VITE_APP_URL}/storage/programas/diseño_desarrollo.JPEG`
+);
+const diseño_programacion = computed(
+    () => `${import.meta.env.VITE_APP_URL}/storage/programas/diseño_programacion.JPEG`
 );
 </script>
 
@@ -473,7 +482,8 @@ const programa_hgpt = computed(
                             </div>
                         </div>
                     </div>
-<!--programa open-->
+
+                    <!--programa open-->
                     <div class="bg-white">
                         <div class="relative">
                             <!-- Imagen -->
@@ -526,13 +536,17 @@ const programa_hgpt = computed(
                     </div>
 
                     
+
+
+
+
                     <div class="bg-white">
                         <div class="relative">
                             <!-- Imagen -->
                             <div>
                                 <img
                                     class="w-full h-auto mx-auto object-cover"
-                                    :src="programa_conexion"
+                                    :src="diseño_desarrollo"
                                 />
                             </div>
 
@@ -543,9 +557,10 @@ const programa_hgpt = computed(
                                 <p
                                     class="roboto-condensed-semibold text-white [text-shadow:_0_8px_8px_rgb(0,0,0,0.8)] text-xl sm:text-3xl md:text-3xl lg:text-4xl xl:text-5xl"
                                 >
-                                    Programa de conexión para la empleabilidad,
-                                    emprendimiento y educación financiera <br />
-                                    TUNGURAHUA - SPEEDY
+                                    DISEÑO Y DESARROLLO DE UNA APLICACIÓN 
+                                    MÓVIL Y PLATAFORMA WEB DE RECICLAJE EN 
+                                    EL PROYECTO APPEDAL PARA RECICLADORAS DE 
+                                    BASE CON INNOVACIÓN Y TECNOLOGÍA.
                                 </p>
                             </div>
                         </div>
@@ -555,32 +570,30 @@ const programa_hgpt = computed(
                             >
                                 <div>
                                     <img
-                                        class="max-w-[50%] sm:max-w-[50%] md:max-w-[30%] lg:max-w-[30%] xl:max-w-[25%] h-auto pl-5"
-                                        :src="conexion"
+                                        class="max-w-[40%] sm:max-w-[30%] md:max-w-[30%] lg:max-w-[30%] xl:max-w-[25%] h-auto pl-5"
+                                        :src="tfw"
                                     />
                                 </div>
                                 <div class="flex justify-end">
                                     <img
-                                        class="max-w-[40%] sm:max-w-[40%] md:max-w-[40%] lg:max-w-[40%] xl:max-w-[30%] h-auto object-contain"
-                                        :src="speedy"
-                                    />
-                                    <img
-                                        class="max-w-[40%] sm:max-w-[25%] md:max-w-[25%] lg:max-w-[25%] xl:max-w-[25%] h-auto object-contain"
-                                        :src="cipt"
+                                        class="max-w-[50%] sm:max-w-[50%] md:max-w-[50%] lg:max-w-[40%] xl:max-w-[30%] h-auto pr-5"
+                                        :src="Coica"
                                     />
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                                        
+
+
+
                     <div class="bg-white">
                         <div class="relative">
                             <!-- Imagen -->
                             <div>
                                 <img
                                     class="w-full h-auto mx-auto object-cover"
-                                    :src="programa_hgpt"
+                                    :src="diseño_programacion"
                                 />
                             </div>
 
@@ -591,8 +604,9 @@ const programa_hgpt = computed(
                                 <p
                                     class="roboto-condensed-semibold text-white [text-shadow:_0_8px_8px_rgb(0,0,0,0.8)] text-xl sm:text-3xl md:text-3xl lg:text-4xl xl:text-5xl"
                                 >
-                                    Red de Tiendas TUNGURAHUA <br />
-                                    TUNGURAHUA - HGPT
+                                    DISEÑO Y PROGRAMACIÓN DE LA PLATAFORMA DE PROMOCIÓN 
+                                    DE EMPRENDIMIENTOS Y REPOSITORIOS DIGITAL DE CONOCIMIENTOS 
+                                    ANCESTRALES.
                                 </p>
                             </div>
                         </div>
@@ -600,22 +614,27 @@ const programa_hgpt = computed(
                             <div
                                 class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-5 pt-5 pb-5 items-center"
                             >
-                                <div></div>
-                                <div class="flex justify-end">
+                                <div>
                                     <img
-                                        class="max-w-[40%] sm:max-w-[40%] md:max-w-[40%] lg:max-w-[40%] xl:max-w-[40%] h-auto pr-5"
-                                        :src="hgpt"
+                                        class="max-w-[40%] sm:max-w-[30%] md:max-w-[30%] lg:max-w-[30%] xl:max-w-[25%] h-auto pl-5"
+                                        :src="Coica"
                                     />
                                 </div>
+                                
                             </div>
                         </div>
                     </div>
-
                     
 
 
 
 
+                    
+
+
+                    
+
+                    
                     <div class="bg-azul-opaco rounded-b-30">
                         <div
                             class="p-[40px] sm:p-[50px] md:p-[70px] lg:p-[85px] xl:p-[90px]"
