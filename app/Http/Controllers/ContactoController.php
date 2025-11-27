@@ -22,7 +22,7 @@ class ContactoController extends Controller
         Contacto::create($validated);
 
         // Enviar el correo con los datos del formulario
-        Mail::to('info@ninari.org')->send(new Mail3(
+        Mail::to('edgartimoteo@gmail.com')->send(new Mail3(
             $validated['nombre'],
             $validated['email'],
             $validated['mensaje']

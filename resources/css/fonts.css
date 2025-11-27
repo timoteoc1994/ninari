@@ -27,8 +27,39 @@
 }
 
 
+
+
+/* Nuevas fuentes */
+@font-face {
+  font-family: 'Abel-Pro';
+  src: url('/fonts/Abel-Pro.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Abel-Pro-Bold';
+  src: url('/fonts/Abel-Pro-Bold.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Barlow-Bold';
+  src: url('/fonts/Barlow-Bold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Barlow-Regular';
+  src: url('/fonts/Barlow-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 li {
-  font-family: 'brandon-grotesque-black';
+  font-family: 'Barlow-Regular';
 }
 .roboto-condensed-semibold {
   font-family: 'roboto-condensed-semibold';

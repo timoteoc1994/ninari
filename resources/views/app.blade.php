@@ -17,5 +17,6 @@
     </head>
     <body class="font-sans antialiased">
         @inertia
+        <script src="/js/finisher-header.es5.min.js" type="text/javascript"></script>
     </body>
 </html>

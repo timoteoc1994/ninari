@@ -14,20 +14,6 @@ Route::get('/', function () {
     ]);
 })->name('welcome');
 
-// Redirigir login y register a la página principal
-Route::get('/login', function () {
-    return redirect('/');
-})->name('login');
-Route::post('/login', function () {
-    return redirect('/');
-});
-
-Route::get('/register', function () {
-    return redirect('/');
-})->name('register');
-Route::post('/register', function () {
-    return redirect('/');
-});
 
 
 Route::middleware([
@@ -55,3 +41,9 @@ Route::get('/contacto', function () {
 
 
 Route::post('contacto_guardar', [ContactoController::class, 'contacto_guardar'])->name('contacto_guardar');
+
+
+//rutas pagina web 2
+Route::get('/inicio2', function () {
+    return Inertia::render('Web2/Inicio');
+})->name('inicio2');
