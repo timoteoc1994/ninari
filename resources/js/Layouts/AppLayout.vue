@@ -28,7 +28,7 @@ const isMobileMenuOpen = ref(false);
 
             <!-- Mobile Header -->
             <div
-                class="lg:hidden bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 p-4 flex items-center justify-between"
+                class="lg:hidden bg-white dark:bg-white border-b border-gray-200 dark:border-gray-700 p-4 flex items-center justify-between"
             >
                 <!-- Logo -->
                 <Link :href="route('dashboard')">
@@ -61,7 +61,7 @@ const isMobileMenuOpen = ref(false);
                 v-if="$slots.header"
                 class="bg-white dark:bg-gray-800 shadow z-10"
             >
-                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                <div class="max-w-7xl mx-auto py-3 px-4 sm:px-6 lg:px-8">
                     <slot name="header" />
                 </div>
             </header>

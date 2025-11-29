@@ -21,6 +21,11 @@ const menuItems = [
         icon: "M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6",
     },
     {
+        name: "Certificados",
+        route: "certificados.index",
+        icon: `<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><title xmlns="">text-box-to-text-box-multiple-transition</title><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M8 8h8M8 12h8M8 16h5M20 5v14c0 0.55 -0.45 1 -1 1h-14c-0.55 0 -1 -0.45 -1 -1v-14c0 -0.55 0.45 -1 1 -1h14c0.55 0 1 0.45 1 1Z"><animate fill="freeze" attributeName="d" dur="0.4s" values="M8 8h8M8 12h8M8 16h5M20 5v14c0 0.55 -0.45 1 -1 1h-14c-0.55 0 -1 -0.45 -1 -1v-14c0 -0.55 0.45 -1 1 -1h14c0.55 0 1 0.45 1 1Z;M10 6h8M10 10h8M10 14h5M22 3v14c0 0.55 -0.45 1 -1 1h-14c-0.55 0 -1 -0.45 -1 -1v-14c0 -0.55 0.45 -1 1 -1h14c0.55 0 1 0.45 1 1Z"/></path><path stroke-dasharray="36" stroke-dashoffset="36" d="M2 6v15c0 0.55 0.45 1 1 1h15"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.4s" dur="0.5s" values="36;0"/></path></g></svg>`,
+    },
+    {
         name: "Profile",
         route: "profile.show",
         icon: "M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z",
@@ -30,6 +35,23 @@ const menuItems = [
 // Helper to check if route is active
 const isRouteActive = (routeName) => {
     return route().current(routeName);
+};
+
+// Tooltip Logic
+const hoveredItem = ref(null);
+const tooltipStyle = ref({});
+
+const showTooltip = (event, item) => {
+    const rect = event.currentTarget.getBoundingClientRect();
+    hoveredItem.value = item;
+    tooltipStyle.value = {
+        top: `${rect.top + rect.height / 2}px`,
+        left: `${rect.right + 10}px`, // Add some spacing
+    };
+};
+
+const hideTooltip = () => {
+    hoveredItem.value = null;
 };
 </script>
 
@@ -91,8 +113,19 @@ const isRouteActive = (routeName) => {
                             item.route
                         ),
                     }"
+                    @mouseenter="showTooltip($event, item)"
+                    @mouseleave="hideTooltip"
                 >
+                    <!-- Custom SVG Icon -->
+                    <div
+                        v-if="item.icon.startsWith('<svg')"
+                        v-html="item.icon"
+                        class="h-6 w-6 transition-transform duration-300 group-hover:scale-110 [&>svg]:w-full [&>svg]:h-full"
+                    ></div>
+
+                    <!-- Standard Path Icon -->
                     <svg
+                        v-else
                         xmlns="http://www.w3.org/2000/svg"
                         class="h-6 w-6 transition-transform duration-300 group-hover:scale-110"
                         fill="none"
@@ -107,23 +140,6 @@ const isRouteActive = (routeName) => {
                         />
                     </svg>
                 </Link>
-
-                <!-- 3D Glass Tooltip -->
-                <div
-                    class="absolute left-14 top-1/2 -translate-y-1/2 ml-4 opacity-0 group-hover:opacity-100 pointer-events-none transition-all duration-300 transform translate-x-[-10px] group-hover:translate-x-0 z-50 hidden lg:block"
-                >
-                    <div
-                        class="relative bg-gray-900/80 backdrop-blur-md text-white px-4 py-2 rounded-lg shadow-xl border border-white/10 whitespace-nowrap"
-                    >
-                        <!-- Arrow -->
-                        <div
-                            class="absolute left-0 top-1/2 -translate-x-1 -translate-y-1/2 border-t-4 border-b-4 border-r-4 border-transparent border-r-gray-900/80"
-                        ></div>
-                        <span class="font-medium tracking-wide">{{
-                            item.name
-                        }}</span>
-                    </div>
-                </div>
             </div>
         </nav>
 
@@ -137,6 +153,8 @@ const isRouteActive = (routeName) => {
                     <button
                         type="submit"
                         class="relative flex items-center justify-center w-12 h-12 rounded-xl text-gray-500 dark:text-gray-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 transition-all duration-300"
+                        @mouseenter="showTooltip($event, { name: 'Log Out' })"
+                        @mouseleave="hideTooltip"
                     >
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -154,23 +172,30 @@ const isRouteActive = (routeName) => {
                         </svg>
                     </button>
                 </form>
-
-                <!-- Tooltip for Logout -->
-                <div
-                    class="absolute left-14 top-1/2 -translate-y-1/2 ml-4 opacity-0 group-hover:opacity-100 pointer-events-none transition-all duration-300 transform translate-x-[-10px] group-hover:translate-x-0 z-50 hidden lg:block"
-                >
-                    <div
-                        class="relative bg-red-900/80 backdrop-blur-md text-white px-4 py-2 rounded-lg shadow-xl border border-white/10 whitespace-nowrap"
-                    >
-                        <div
-                            class="absolute left-0 top-1/2 -translate-x-1 -translate-y-1/2 border-t-4 border-b-4 border-r-4 border-transparent border-r-red-900/80"
-                        ></div>
-                        <span class="font-medium tracking-wide">Log Out</span>
-                    </div>
-                </div>
             </div>
         </div>
     </aside>
+
+    <!-- Teleported Tooltip -->
+    <Teleport to="body">
+        <div
+            v-if="hoveredItem"
+            :style="tooltipStyle"
+            class="fixed z-[9999] pointer-events-none transform -translate-y-1/2 transition-opacity duration-200"
+        >
+            <div
+                class="relative bg-gray-900/80 backdrop-blur-md text-white px-4 py-2 rounded-lg shadow-xl border border-white/10 whitespace-nowrap"
+            >
+                <!-- Arrow -->
+                <div
+                    class="absolute left-0 top-1/2 -translate-x-1 -translate-y-1/2 border-t-4 border-b-4 border-r-4 border-transparent border-r-gray-900/80"
+                ></div>
+                <span class="font-medium tracking-wide">{{
+                    hoveredItem.name
+                }}</span>
+            </div>
+        </div>
+    </Teleport>
 </template>
 
 <style scoped>
