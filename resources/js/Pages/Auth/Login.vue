@@ -6,7 +6,6 @@ import InputError from "@/Components/InputError.vue";
 import InputLabel from "@/Components/InputLabel.vue";
 import PrimaryButton from "@/Components/PrimaryButton.vue";
 import TextInput from "@/Components/TextInput.vue";
-import { onMounted, onUnmounted } from "vue";
 import { ref } from "vue";
 
 defineProps({
@@ -34,65 +33,13 @@ const showPassword = ref(false);
 const togglePassword = () => {
     showPassword.value = !showPassword.value;
 };
-
-const mouseX = ref(0);
-const mouseY = ref(0);
-
-const handleMouseMove = (event) => {
-    mouseX.value = event.clientX - window.innerWidth / 2;
-    mouseY.value = event.clientY - window.innerHeight / 2;
-};
-
-onMounted(() => {
-    window.addEventListener("mousemove", handleMouseMove);
-
-    // Cargar el script de Finisher Header dinámicamente
-    const script = document.createElement("script");
-    script.src = "/js/finisher-header.es5.min.js";
-    script.onload = () => {
-        new window.FinisherHeader({
-            count: 12,
-            size: {
-                min: 1300,
-                max: 1500,
-                pulse: 0,
-            },
-            speed: {
-                x: {
-                    min: 0.6,
-                    max: 3,
-                },
-                y: {
-                    min: 0.6,
-                    max: 3,
-                },
-            },
-            colors: {
-                background: "#551368",
-                particles: ["#ff681c", "#87ddfe", "#551368", "#ff0a53"],
-            },
-            blending: "overlay",
-            opacity: {
-                center: 0.6,
-                edge: 0,
-            },
-            skew: 0,
-            shapes: ["c"],
-        });
-    };
-    document.body.appendChild(script);
-});
-
-onUnmounted(() => {
-    window.removeEventListener("mousemove", handleMouseMove);
-});
 </script>
 
 <template>
     <Head title="Log in" />
 
     <div
-        class="finisher-header min-h-screen flex flex-col justify-center items-center pt-6 sm:pt-0"
+        class="bg-pattern-doubts min-h-screen flex flex-col justify-center items-center pt-6 sm:pt-0 px-4"
     >
         <div
             class="w-full sm:max-w-md mt-6 px-8 py-10 glass-card shadow-2xl overflow-hidden sm:rounded-3xl relative z-30 animate-card-enter"
@@ -235,8 +182,16 @@ onUnmounted(() => {
 </template>
 
 <style scoped>
-.finisher-header {
-    width: 100%;
+.bg-pattern-doubts {
+    background: linear-gradient(
+        135deg,
+        #6610f2 0%,
+
+        #ff6b1c 62.5%,
+        #e91e63 75%,
+        #9c27b0 87.5%,
+        #6610f2 100%
+    );
     position: relative;
 }
 
