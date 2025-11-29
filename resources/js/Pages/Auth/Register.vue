@@ -282,10 +282,7 @@ const togglePasswordConfirmation = () => {
     background: linear-gradient(
         135deg,
         #6610f2 0%,
-        #087f8c 12.5%,
-        #5fb962 25%,
-        #d4d921 37.5%,
-        #ffa400 50%,
+
         #ff6b1c 62.5%,
         #e91e63 75%,
         #9c27b0 87.5%,
