@@ -52,7 +52,7 @@ class CertificadosController extends Controller
             'nombre' => 'required|string|max:255',
             'badge' => 'required|string|max:50',
             'color' => 'required|string|max:50',
-            'pdf_file' => 'required|file|mimes:pdf|max:5120', // 5MB max
+            'pdf_file' => 'required|file|mimes:pdf|max:10120', // 5MB max
         ]);
 
         // Handle PDF upload
@@ -79,7 +79,7 @@ class CertificadosController extends Controller
             'nombre' => 'required|string|max:255',
             'badge' => 'required|string|max:50',
             'color' => 'required|string|max:50',
-            'pdf_file' => 'nullable|file|mimes:pdf|max:5120',
+            'pdf_file' => 'nullable|file|mimes:pdf|max:10S120',
         ]);
 
         if ($request->hasFile('pdf_file')) {
