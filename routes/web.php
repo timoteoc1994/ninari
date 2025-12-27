@@ -8,6 +8,10 @@ use App\Http\Controllers\CertificateVariableController;
 use App\Http\Controllers\CertificateSendController;
 use App\Http\Controllers\CertificateBatchController;
 use App\Http\Controllers\CertificateDownloadController;
+use App\Http\Controllers\EntityController;
+use App\Http\Controllers\EntityFieldController;
+use App\Http\Controllers\ContextController;
+use App\Http\Controllers\ExcelImportController;
 use Inertia\Inertia;
 
 Route::get('/', function () {
@@ -35,7 +39,6 @@ Route::middleware([
     Route::get('certificados', [CertificadosController::class, 'index'])->name('certificados.index');
 
     Route::post('certificados', [CertificadosController::class, 'store'])->name('certificados.store');
-    Route::get('certificados/{id}/edit', [CertificadosController::class, 'edit'])->name('certificados.edit');
     Route::post('certificados/{certificado}', [CertificadosController::class, 'update'])
         ->name('certificados.update');
 
@@ -54,6 +57,47 @@ Route::middleware([
     Route::get('/batches/{batch}', [CertificateBatchController::class, 'show'])->name('certificados.batches.show');
     Route::get('/batches/{batch}/export', [CertificateBatchController::class, 'export'])->name('certificados.batches.export');
     Route::post('/recipients/{recipient}/resend', [CertificateBatchController::class, 'resend'])->name('certificados.recipients.resend');
+
+    // === SISTEMA DE BASE DE DATOS DINÁMICA ===
+    
+    // Gestión de Campos Dinámicos
+    Route::prefix('entity-fields')->name('entity-fields.')->group(function () {
+        Route::get('/', [EntityFieldController::class, 'index'])->name('index');
+        Route::post('/', [EntityFieldController::class, 'store'])->name('store');
+        Route::put('/{field}', [EntityFieldController::class, 'update'])->name('update');
+        Route::delete('/{field}', [EntityFieldController::class, 'destroy'])->name('destroy');
+        Route::get('/all', [EntityFieldController::class, 'getAllFields'])->name('all');
+    });
+
+    // Gestión de Entidades
+    Route::prefix('entities')->name('entities.')->group(function () {
+        Route::get('/', [EntityController::class, 'index'])->name('index');
+        Route::post('/', [EntityController::class, 'store'])->name('store');
+        Route::get('/export', [EntityController::class, 'export'])->name('export');
+        Route::get('/{entity}', [EntityController::class, 'show'])->name('show');
+        Route::put('/{entity}', [EntityController::class, 'update'])->name('update');
+        Route::delete('/{entity}', [EntityController::class, 'destroy'])->name('destroy');
+    });
+
+    // Gestión de Contextos
+    Route::prefix('contexts')->name('contexts.')->group(function () {
+        Route::get('/', [ContextController::class, 'index'])->name('index');
+        Route::post('/', [ContextController::class, 'store'])->name('store');
+        Route::put('/{context}', [ContextController::class, 'update'])->name('update');
+        Route::delete('/{context}', [ContextController::class, 'destroy'])->name('destroy');
+        Route::get('/{context}/entities', [ContextController::class, 'showEntities'])->name('entities');
+        Route::post('/{context}/attach', [ContextController::class, 'attachEntities'])->name('attach');
+        Route::delete('/{context}/detach/{entity}', [ContextController::class, 'detachEntity'])->name('detach');
+    });
+
+    // Importación de Excel
+    Route::prefix('excel-import')->name('excel-import.')->group(function () {
+        Route::get('/', [ExcelImportController::class, 'index'])->name('index');
+        Route::post('/upload', [ExcelImportController::class, 'upload'])->name('upload');
+        Route::post('/create-fields', [ExcelImportController::class, 'createFields'])->name('create-fields');
+        Route::post('/import', [ExcelImportController::class, 'import'])->name('import');
+        Route::post('/cancel', [ExcelImportController::class, 'cancel'])->name('cancel');
+    });
 });
 
 // Public Download Route
