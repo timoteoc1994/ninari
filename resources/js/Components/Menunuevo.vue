@@ -7,17 +7,18 @@ const menuOpen = ref(false);
 const toggleMenu = () => {
     menuOpen.value = !menuOpen.value;
 };
+const logoblanco= "/storage/webninari2/logoblanco.png";
 </script>
 
 <template>
     <!-- Delete Account Confirmation Modal -->
 
-    <div class="relative grid grid-cols-12 p-6">
+    <div class="relative grid grid-cols-12 p-6 z-[100]">
         <!-- Logo -->
         <div class="col-span-3 flex justify-center">
             <Link :href="route('welcome')">
                 <img
-                    src="/storage/logoblanco.png"
+                    :src="logoblanco"
                     class="transition-transform duration-300 ease-in-out hover:scale-110"
                     alt="Logo"
                     width="200px"
@@ -31,12 +32,12 @@ const toggleMenu = () => {
                 <ul class="flex gap-4">
                     <li>
                         <Link
-                            :href="route('inicio2')"
+                            :href="route('welcome')"
                             class="text-lg px-3 py-1 inline-block text-white"
                             :class="{
-                                'txt-colo-menu': !route().current('inicio2'), // color por defecto
+                                'txt-colo-menu': !route().current('welcome'), // color por defecto
                                 'border-b-2 border-white':
-                                    route().current('inicio2'), // raya blanca abajo cuando está activo
+                                    route().current('welcome'), // raya blanca abajo cuando está activo
                             }"
                         >
                             Inicio
@@ -44,12 +45,12 @@ const toggleMenu = () => {
                     </li>
                     <li>
                         <Link
-                            :href="route('inicio2')"
+                            :href="route('nosotros2')"
                             class="text-lg px-3 py-1 inline-block text-white"
                             :class="{
-                                'txt-colo-menu': !route().current('inicio2'), // color por defecto
+                                'txt-colo-menu': !route().current('nosotros2'), // color por defecto
                                 'border-b-2 border-white':
-                                    route().current('inicio2'), // raya blanca abajo cuando está activo
+                                    route().current('nosotros2'), // raya blanca abajo cuando está activo
                             }"
                         >
                             Nosotros
@@ -57,12 +58,12 @@ const toggleMenu = () => {
                     </li>
                     <li>
                         <Link
-                            :href="route('inicio2')"
+                            :href="route('ecosistema2')"
                             class="text-lg px-3 py-1 inline-block text-white"
                             :class="{
-                                'txt-colo-menu': !route().current('inicio2'), // color por defecto
+                                'txt-colo-menu': !route().current('ecosistema2'), // color por defecto
                                 'border-b-2 border-white':
-                                    route().current('inicio2'), // raya blanca abajo cuando está activo
+                                    route().current('ecosistema2'), // raya blanca abajo cuando está activo
                             }"
                         >
                             Ecosistema
@@ -70,38 +71,28 @@ const toggleMenu = () => {
                     </li>
                     <li>
                         <Link
-                            :href="route('inicio2')"
+                            :href="route('programas2')"
                             class="text-lg px-3 py-1 inline-block text-white"
                             :class="{
-                                'txt-colo-menu': !route().current('inicio2'), // color por defecto
+                                'txt-colo-menu': !route().current('programas2'), // color por defecto
                                 'border-b-2 border-white':
-                                    route().current('inicio2'), // raya blanca abajo cuando está activo
+                                    route().current('programas2'), // raya blanca abajo cuando está activo
                             }"
                         >
                             Programas
                         </Link>
                     </li>
                     <li>
-                        <Link
-                            :href="route('inicio2')"
-                            class="text-lg px-3 py-1 inline-block text-white"
-                            :class="{
-                                'txt-colo-menu': !route().current('inicio2'), // color por defecto
-                                'border-b-2 border-white':
-                                    route().current('inicio2'), // raya blanca abajo cuando está activo
-                            }"
-                        >
-                            Noticias
-                        </Link>
+                        <a href="https://www.linkedin.com/company/ninari-foundation/posts/?feedView=all" target="_blank"  class="text-lg px-3 py-1 inline-block text-white">Noticias</a>
                     </li>
                     <li>
                         <Link
-                            :href="route('inicio2')"
+                            :href="route('contacto2')"
                             class="text-lg px-3 py-1 inline-block text-white"
                             :class="{
-                                'txt-colo-menu': !route().current('inicio2'), // color por defecto
+                                'txt-colo-menu': !route().current('contacto2'), // color por defecto
                                 'border-b-2 border-white':
-                                    route().current('inicio2'), // raya blanca abajo cuando está activo
+                                    route().current('contacto2'), // raya blanca abajo cuando está activo
                             }"
                         >
                             Contacto
@@ -112,16 +103,16 @@ const toggleMenu = () => {
         </div>
         <!-- botón sesión (solo desktop) -->
         <div class="col-span-2 hidden lg:flex items-center justify-end">
-            <Link :href="route('login')" class="btn-impulsamos lg:mb-0">
+            <a href="https://portal.ninari.org/login" class="btn-impulsamos lg:mb-0">
                 Iniciar Sesión
-            </Link>
+            </a>
         </div>
 
         <!-- Botón de menú hamburguesa (solo en móviles) -->
         <div class="col-span-9 flex justify-end items-center lg:hidden">
             <button
                 @click="toggleMenu"
-                class="text-gray-800 focus:outline-none"
+                class="text-white focus:outline-none"
             >
                 <svg
                     v-if="!menuOpen"
@@ -160,41 +151,57 @@ const toggleMenu = () => {
     <!-- Menú desplegable en móviles -->
     <div
         v-if="menuOpen"
-        class="lg:hidden absolute top-20 left-0 w-full bg-white shadow-lg z-50"
+        class="lg:hidden fixed top-20 left-0 w-full bg-white shadow-lg z-[9999]"
     >
         <nav>
             <ul class="flex flex-col gap-3 p-5">
                 <li>
                     <Link
                         :href="route('welcome')"
-                        class="mi-elemento block text-lg p-3 hover:bg-gray-200 rounded-md active"
+                        @click="toggleMenu"
+                        class="block text-lg p-3 hover:bg-gray-200 rounded-md"
+                        :class="{
+                            'bg-purple-100 font-bold': route().current('welcome')
+                        }"
                         >Inicio</Link
                     >
                 </li>
                 <li>
                     <Link
-                        :href="route('nosotros')"
+                        :href="route('nosotros2')"
+                        @click="toggleMenu"
                         class="block text-lg p-3 hover:bg-gray-200 rounded-md"
+                        :class="{
+                            'bg-purple-100 font-bold': route().current('nosotros2')
+                        }"
                         >Nosotros</Link
                     >
                 </li>
                 <li>
                     <Link
-                        :href="route('ecosistema')"
+                        :href="route('ecosistema2')"
+                        @click="toggleMenu"
                         class="block text-lg p-3 hover:bg-gray-200 rounded-md"
+                        :class="{
+                            'bg-purple-100 font-bold': route().current('ecosistema2')
+                        }"
                         >Ecosistema</Link
                     >
                 </li>
                 <li>
                     <Link
-                        :href="route('programas')"
+                        :href="route('programas2')"
+                        @click="toggleMenu"
                         class="block text-lg p-3 hover:bg-gray-200 rounded-md"
+                        :class="{
+                            'bg-purple-100 font-bold': route().current('programas2')
+                        }"
                         >Programas</Link
                     >
                 </li>
                 <li>
                     <a
-                        href="https://www.instagram.com/ninarifoundation"
+                        href="https://www.linkedin.com/company/ninari-foundation/posts/?feedView=all"
                         target="_blank"
                         class="block text-lg p-3 hover:bg-gray-200 rounded-md"
                         >Noticias</a
@@ -202,9 +209,20 @@ const toggleMenu = () => {
                 </li>
                 <li>
                     <Link
-                        :href="route('contacto')"
+                        :href="route('contacto2')"
+                        @click="toggleMenu"
                         class="block text-lg p-3 hover:bg-gray-200 rounded-md"
+                        :class="{
+                            'bg-purple-100 font-bold': route().current('contacto2')
+                        }"
                         >Contacto</Link
+                    >
+                </li>
+                <li>
+                    <a
+                        href="https://portal.ninari.org/login"
+                        class="block text-lg p-3 bg-purple-600 text-white text-center rounded-md hover:bg-purple-700 transition-all"
+                        >Iniciar Sesión</a
                     >
                 </li>
             </ul>

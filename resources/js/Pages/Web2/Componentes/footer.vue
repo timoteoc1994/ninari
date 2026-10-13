@@ -14,6 +14,18 @@ const ubicacion = "/storage/webninari2/ubicacion.webp";
 
 <template>
     <footer class="footer-container">
+        <div v-if="$page.url === '/contacto'" class="info-box">
+            <p class="info-text">
+                Desarrollamos programas sistémicos que inciden en el desarrollo
+                económico sostenible de todas las regiones del Ecuador. Buscamos
+                trabajar en alianza con Gobiernos Locales, ONG, Academia,
+                sociedad civil y sector privado.
+                <strong
+                    >Si es de tu interés conocer más sobre nuestros programas,
+                    contáctate con nosotros.</strong
+                >
+            </p>
+        </div>
         <div class="footer-content">
             <!-- Columna 1: Logo y descripción -->
             <div class="footer-column">
@@ -35,7 +47,7 @@ const ubicacion = "/storage/webninari2/ubicacion.webp";
             <div class="footer-column">
                 <h3 class="footer-title">Menú</h3>
                 <ul class="footer-links">
-                    <li ><Link href="/inicio">Inicio</Link></li>
+                    <li><Link href="/inicio">Inicio</Link></li>
                     <li><Link href="/nosotros">Nosotros</Link></li>
                     <li><Link href="/ecosistema">Ecosistema</Link></li>
                     <li><Link href="/programas">Programas</Link></li>
@@ -55,16 +67,32 @@ const ubicacion = "/storage/webninari2/ubicacion.webp";
                         <img :src="email" alt="Email" /> info@ninari.org.ec
                     </p>
                     <div class="social-icons">
-                        <a href="https://www.facebook.com/ninarifoundation" target="_blank" class="social-link">
+                        <a
+                            href="https://www.facebook.com/ninarifoundation"
+                            target="_blank"
+                            class="social-link"
+                        >
                             <img :src="iconFacebook" alt="Facebook" />
                         </a>
-                        <a href="https://www.tiktok.com/@ninarifoundation" target="_blank" class="social-link">
+                        <a
+                            href="https://www.tiktok.com/@ninarifoundation"
+                            target="_blank"
+                            class="social-link"
+                        >
                             <img :src="iconTiktok" alt="TikTok" />
                         </a>
-                        <a href="https://www.instagram.com/ninarifoundation/#" target="_blank" class="social-link">
+                        <a
+                            href="https://www.instagram.com/ninarifoundation/#"
+                            target="_blank"
+                            class="social-link"
+                        >
                             <img :src="iconInstagram" alt="Instagram" />
                         </a>
-                        <a href="https://www.linkedin.com/company/ninari-foundation/posts/?feedView=all" target="_blank" class="social-link">
+                        <a
+                            href="https://www.linkedin.com/company/ninari-foundation/posts/?feedView=all"
+                            target="_blank"
+                            class="social-link"
+                        >
                             <img :src="linkedin" alt="LinkedIn" />
                         </a>
                     </div>
@@ -86,13 +114,23 @@ const ubicacion = "/storage/webninari2/ubicacion.webp";
                     </div>
                 </div>
 
-                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d289.1605764950617!2d-78.63513780850593!3d-1.2405102434363786!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1ses!2sec!4v1763047876713!5m2!1ses!2sec" width="250" height="100" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d289.1605764950617!2d-78.63513780850593!3d-1.2405102434363786!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1ses!2sec!4v1763047876713!5m2!1ses!2sec"
+                    width="250"
+                    height="100"
+                    style="border: 0"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                ></iframe>
             </div>
         </div>
 
         <!-- Copyright -->
         <div class="footer-bottom">
-            <p class="barlow-regular">© 2025 NINARI Foundation. Todos los derechos reservados.</p>
+            <p class="barlow-regular">
+                © 2025 NINARI Foundation. Todos los derechos reservados.
+            </p>
         </div>
     </footer>
 </template>
@@ -104,6 +142,30 @@ const ubicacion = "/storage/webninari2/ubicacion.webp";
     padding: 2rem 2rem 2rem;
     position: relative;
     overflow: hidden;
+}
+
+.info-box {
+    max-width: 1200px;
+    margin: 0 auto 3rem;
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    border-radius: 15px;
+    padding: 2rem 3rem;
+    position: relative;
+    z-index: 1;
+}
+
+.info-text {
+    color: white;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    text-align: justify;
+    margin: 0;
+    font-family: "Barlow-Regular", sans-serif;
+}
+
+.info-text strong {
+    font-family: "Barlow-Bold", sans-serif;
+    font-weight: 700;
 }
 
 .footer-container::before {
@@ -175,7 +237,6 @@ const ubicacion = "/storage/webninari2/ubicacion.webp";
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 0.5rem 1rem;
-    
 }
 
 .footer-links li {
@@ -278,10 +339,19 @@ const ubicacion = "/storage/webninari2/ubicacion.webp";
     text-align: center;
     position: relative;
     z-index: 1;
-    
 }
+.info-box {
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.info-text {
+    font-size: 1.5rem;
+    line-height: 1.6;
+}
+
 .barlow-regular {
-    font-family: 'Barlow-Regular', sans-serif;
+    font-family: "Barlow-Regular", sans-serif;
 }
 .footer-bottom p {
     font-size: 0.95rem;

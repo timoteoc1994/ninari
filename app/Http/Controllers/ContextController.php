@@ -29,7 +29,7 @@ class ContextController extends Controller
             ->paginate(20)
             ->withQueryString();
 
-        return Inertia::render('Admin/BaseDeDatos/VerContextos', [
+        return Inertia::render('BaseDeDatos/VerContextos', [
             'contexts' => $contexts,
             'filters' => $request->only(['search', 'tipo', 'year']),
         ]);
@@ -131,7 +131,7 @@ class ContextController extends Controller
                 'values' => $entity->getAllFieldValues(),
             ]);
 
-        return Inertia::render('Admin/BaseDeDatos/VerContextoEntidades', [
+        return Inertia::render('BaseDeDatos/VerContextoEntidades', [
             'context' => $context,
             'entities' => $entities,
         ]);

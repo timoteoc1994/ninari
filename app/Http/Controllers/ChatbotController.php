@@ -58,65 +58,65 @@ REGLAS ESTRICTAS:
 4. Sé amable, profesional y conciso.
 5. Usa un tono cercano pero profesional.
 6. No saludes ya que existe un mensaje inicial de bienvenida, solo responde directamente.
+7. Responde siempre en español.";
 
-Pregunta del usuario: {$userMessage}
+       try {
+    $apiKey = env('API_KEY');
+    
+    if (!$apiKey) {
+        return response()->json(['error' => 'API Key no configurada'], 500);
+    }
 
-Responde en español:";
+    // URL del modelo estable
+    $url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-lite:generateContent?key=" . $apiKey;
 
-        try {
-            // Llamar a la API de Google Gemini
-            $apiKey = env('API_KEY');
-            
-            if (!$apiKey) {
-                return response()->json([
-                    'error' => 'La API de inteligencia artificial no está configurada'
-                ], 500);
-            }
-
-            $url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp:generateContent";
-            
-            $response = Http::timeout(30)->withHeaders([
-                'Content-Type' => 'application/json',
-                'x-goog-api-key' => $apiKey,
-            ])->post($url, [
-                'contents' => [
-                    [
-                        'parts' => [
-                            ['text' => $systemContext]
-                        ]
-                    ]
-                ],
-                'generationConfig' => [
-                    'temperature' => 0.7,
-                    'maxOutputTokens' => 500,
+    $response = Http::timeout(30)->withHeaders([
+        'Content-Type' => 'application/json',
+    ])->post($url, [
+        // Las instrucciones del sistema van en su propio campo
+        'system_instruction' => [
+            'parts' => [
+                ['text' => $systemContext]
+            ]
+        ],
+        'contents' => [
+            [
+                'role' => 'user',
+                'parts' => [
+                    ['text' => $userMessage]
                 ]
-            ]);
+            ]
+        ],
+        'generationConfig' => [
+            'temperature' => 0.7,
+            'maxOutputTokens' => 800,
+        ]
+    ]);
 
-            if ($response->successful()) {
-                $data = $response->json();
-                $respuestaIA = $data['candidates'][0]['content']['parts'][0]['text'] ?? '';
+    if ($response->successful()) {
+        $data = $response->json();
+        // Estructura de respuesta de Gemini 2.0
+        $respuestaIA = $data['candidates'][0]['content']['parts'][0]['text'] ?? '';
 
-                if ($respuestaIA) {
-                    return response()->json([
-                        'success' => true,
-                        'message' => $respuestaIA,
-                        'timestamp' => now()->toIso8601String()
-                    ]);
-                }
-            }
+        return response()->json([
+            'success' => true,
+            'message' => $respuestaIA,
+            'timestamp' => now()->toIso8601String()
+        ]);
+    }
 
-            // Si la respuesta no fue exitosa
-            return response()->json([
-                'error' => 'No se pudo procesar tu mensaje. Por favor intenta nuevamente.',
-                'details' => $response->json()
-            ], 500);
+    // Si falla, retornamos el error real de Google para saber qué pasa
+    return response()->json([
+        'error' => 'Error en la respuesta de la API',
+        'details' => $response->json()
+    ], $response->status());
 
-        } catch (\Exception $e) {
-            return response()->json([
-                'error' => 'Error al conectar con el asistente virtual. Por favor intenta más tarde.',
-                'details' => $e->getMessage()
-            ], 500);
-        }
+} catch (\Exception $e) {
+    return response()->json([
+        'error' => 'Excepción capturada',
+        'details' => $e->getMessage()
+    ], 500);
+}
     }
 
     /**

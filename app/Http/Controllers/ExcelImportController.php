@@ -27,7 +27,7 @@ class ExcelImportController extends Controller
     {
         $existingFields = EntityField::ordered()->get(['id', 'nombre_campo', 'etiqueta', 'tipo_dato']);
 
-        return Inertia::render('Admin/BaseDeDatos/ImportarExcel', [
+        return Inertia::render('BaseDeDatos/ImportarExcel', [
             'existingFields' => $existingFields,
         ]);
     }

@@ -4,7 +4,7 @@ import { computed, onMounted } from "vue";
 import Menunuevo from "@/Components/Menunuevo.vue";
 import AOS from "aos";
 import "aos/dist/aos.css";
-const imagen1 = "/storage/imagenesarticulamos/fondo.png";
+const imagen1 = "/storage/webninari2/imagenesarticulamos/fondo.png";
 
 onMounted(() => {
     //animaciones AOS hover
@@ -37,7 +37,7 @@ onMounted(() => {
                     <div class="bg-white/5 rounded-lg p-6" data-aos="fade-up">
                         <p class="colorazul">
                             <span class="resaltartext"
-                                >articulamos y creamos</span
+                                >articulamos y</span
                             >
                             <br />
                             <span class="resaltartext">creamos</span>
@@ -56,7 +56,7 @@ onMounted(() => {
                         data-aos-delay="100"
                     >
                         <img
-                            src="/storage/imagenesarticulamos/resaltado.png"
+                            src="/storage/webninari2/imagenesarticulamos/resaltado.png"
                             class="resalt-img resaltador_img"
                             alt="resaltado"
                         />
@@ -83,7 +83,7 @@ onMounted(() => {
             </div>
             <!-- Curva decorativa: colocada debajo del grid, dentro del header -->
             <div class="justify-center flex">
-                <img src="/storage/imagenesarticulamos/curva.png" />
+                <img src="/storage/webninari2/imagenesarticulamos/curva.png" />
             </div>
         </div>
     </div>

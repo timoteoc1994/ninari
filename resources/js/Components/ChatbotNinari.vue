@@ -10,7 +10,7 @@ const messages = ref([]);
 const chatContainer = ref(null);
 
 // Iconos (reemplaza con tus imágenes si lo deseas)
-const logoNinari = "/storage/webninari2/logoblancoarriba.webp";
+const logoNinari = "/storage/webninari2/logoblanco.png";
 
 // Abrir/cerrar chatbot
 const toggleChat = () => {

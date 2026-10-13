@@ -38,7 +38,7 @@ class EntityController extends Controller
 
         $fields = EntityField::ordered()->get();
 
-        return Inertia::render('Admin/BaseDeDatos/VerBase', [
+        return Inertia::render('BaseDeDatos/VerBase', [
             'entities' => $entities,
             'fields' => $fields,
             'filters' => $request->only(['search', 'tipo']),

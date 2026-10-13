@@ -15,9 +15,9 @@ use App\Http\Controllers\ExcelImportController;
 use Inertia\Inertia;
 
 Route::get('/', function () {
-    return Inertia::render('Welcome', [
+    return Inertia::render('Web2/Inicio', [
         'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
+
         'laravelVersion' => Application::VERSION,
         'phpVersion' => PHP_VERSION,
     ]);
@@ -59,7 +59,7 @@ Route::middleware([
     Route::post('/recipients/{recipient}/resend', [CertificateBatchController::class, 'resend'])->name('certificados.recipients.resend');
 
     // === SISTEMA DE BASE DE DATOS DINÁMICA ===
-    
+
     // Gestión de Campos Dinámicos
     Route::prefix('entity-fields')->name('entity-fields.')->group(function () {
         Route::get('/', [EntityFieldController::class, 'index'])->name('index');
@@ -98,29 +98,36 @@ Route::middleware([
         Route::post('/import', [ExcelImportController::class, 'import'])->name('import');
         Route::post('/cancel', [ExcelImportController::class, 'cancel'])->name('cancel');
     });
+
+    //rutas redes sociales
+    Route::prefix('redes-sociales')->name('redes-sociales.')->group(function () {
+        Route::get('/', function () {
+            return Inertia::render('Admin/RedesSociales/Index');
+        })->name('index');
+    });
 });
 
 // Public Download Route
 Route::get('/certificate/download/{token}', [CertificateDownloadController::class, 'download'])->name('certificate.download');
 
-Route::get('/nosotros', function () {
-    return Inertia::render('Nosotros');
-})->name('nosotros'); // <--- Nombre de la ruta correcto
-Route::get('/ecosistema-ninari', function () {
-    return Inertia::render('Ecosistema');
-})->name('ecosistema'); // <--- Nombre de la ruta correcto
-Route::get('/programas', function () {
-    return Inertia::render('Programas');
-})->name('programas'); // <--- Nombre de la ruta correcto
-Route::get('/contacto', function () {
-    return Inertia::render('Contacto');
-})->name('contacto'); // <--- Nombre de la ruta correcto
 
 
-Route::post('contacto_guardar', [ContactoController::class, 'contacto_guardar'])->name('contacto_guardar');
+Route::post('contacto_guardar', [ContactoController::class, 'contacto_guardar'])->name('contacto.guardar');
 
 
 //rutas pagina web 2
-Route::get('/inicio2', function () {
+Route::get('/inicio', function () {
     return Inertia::render('Web2/Inicio');
 })->name('inicio2');
+Route::get('/nosotros', function () {
+    return Inertia::render('Web2/Nosotros');
+})->name('nosotros2');
+Route::get('/ecosistema', function () {
+    return Inertia::render('Web2/Ecosistema');
+})->name('ecosistema2');
+Route::get('/programas', function () {
+    return Inertia::render('Web2/Programas');
+})->name('programas2');
+Route::get('/contacto', function () {
+    return Inertia::render('Web2/Contacto');
+})->name('contacto2');
